@@ -36,54 +36,101 @@
         $("#btnDK").click(function () {
           $("#myModal").modal();
         });
-        $("#txtTen").blur(function(){
-          var mauKT=/^[A-Za-z ]+/;
-          var chuoi=$("#txtTen").val();
-          if(mauKT.test(chuoi)==true){
-            alert("Nhập đúng");
-          } else {
-            alert("Nhập sai");
-          }
-        })
-        $("#txtCMND").blur(function(){
-          var mauKT=/^[0-9]+-[0-9]+-[0-9]+-[0-9]+/;
-          var chuoi=$("#txtCMND").val();
-          if(mauKT.test(chuoi)==true){
-            alert("Nhập đúng");
-          } else {
-            alert("Nhập sai");
-          }
-        })
-        $("#txtQue").blur(function(){
-          var mauKT=/^[A-Za-z ]+/;
-          var chuoi=$("#txtQue").val();
-          if(mauKT.test(chuoi)==true){
-            alert("Nhập đúng");
-          } else {
-            alert("Nhập sai");
-          }
-        })
-        $("#txtEmail").blur(function(){
-          var mauKT=/^[A-Za-z0-9]+@bc.com.vn$/;
-          var chuoi=$("#txtQue").val();
-          if(mauKT.test(chuoi)==true){
-            alert("Nhập đúng");
-          } else {
-            alert("Nhập sai");
-          }
-        })
-        $("#txtSDT").blur(function(){
-          var mauKT=/^09[0-9]{8}/;
-          var chuoi=$("#txtSDT").val();
-          if(mauKT.test(chuoi)==true){
-            alert("Nhập đúng");
-          } else {
-            alert("Nhập sai");
-          }
-        })
-        .get()
-        .join(",");
+        function kiemTraTen() {
+        var i = 1;
+        let mauKT = /^[A-Za-z ]+/;
+        if ($("#txtTen").val() == "") {
+            $("#tbTen").html("Không để trống");
+            return false;
+        }
+        if (!mauKT.test($("#txtTen").val())) {
+            $("#tbTen").html("Mỗi ký tự đầu viết hoa không sử dụng số");
+            return true;
+        }
+        $("#tbTen").html("*");
+        return true;
+    }
+    $("#txtTen").blur(kiemTraTen);
+
+
+    function kiemTraCMND() {
+        var mauKT = /^\d*$/;
+        if ($("#txtCMND").val() == "") {
+            $("#tbCMND").html("Không để trống");
+            return false;
+        }
+        if (!mauKT.test($("#txtCMND").val())) {
+            $("#tbCMND").html("Nhập số");
+            return true;
+        } else {
+            
+        }
+    }
+    $("#txtCMND").blur(kiemTraCMND);
+
+    function kiemTraDiaChi() {
+        var i = 1;
+        let mauKT = /[A-Za-z0-9]+/;
+        if ($("#txtQue").val() == "") {
+            $("#tbDc").html("Không để trống");
+            return false;
+        }
+        if (!mauKT.test($("#txtQue").val())) {
+            $("#tbDc").html("Phải nhập địa chỉ");
+            return true;
+        }
+        $("#tbDc").html("*");
+        return true;
+    }
+    $("#txtQue").blur(kiemTraDiaChi);
+
+
+    function kiemTraEmail() {
+      var i = 1;
+        let mauKT = /[A-Za-z0-9]+/;
+        if ($("#txtEmail").val() == "") {
+            $("#tbEmail").html("Không để trống");
+            return false;
+        }
+        if (!mauKT.test($("#txtQue").val())) {
+            $("#tbDc").html("Phải nhập Email");
+            return true;
+        }
+        $("#tbEmail").html("*");
+        return true;
+    }
+    $("#txtEmail").blur(kiemTraEmail);
+
+    function kiemTraSDT() {
+        var mauKT = /^0\d{3}-\d{3}-\d{3}$/;
+        if ($("#txtSDT").val() == "") {
+            $("#tbSDT").html("Không để trống và nhập đủ 10 số");
+            return false;
+        }
+        if (!mauKT.test($("#txtSDT").val())) {
+            $("#tbSDT").html("Theo dạng 09xx-xxx-xxx trong đó x là số");
+            return true;
+        }
+        $("#tbSDT").html("*");
+        return true;
+    }
+    $("#txtSDT").blur(kiemTraSDT);
+
+
+    $("#btnLuu").click(function() {
         
+            row = "<tr>";
+            row += "<th>" + (i++) + "</th>";
+            row += "<th>" + $("#txtTen").val() + "</th>";
+            row += "<th>" + $("#txtCMND").val() + "</th>";
+            row += "<th>" + $("#txtQue").val() + "</th>";
+            row += "<th>" + $("#txtEmail").val() + "</th>";
+            row += "<th>" + $("#txtSDT").val() + "</th>";
+            row += "<th>" + $("#txtAvatar").val() + "</th>";
+            $("#danhSach").append(row);
+            $("#myModal").modal("hide");
+       
+    });
       });
     </script>
   </head>
@@ -170,6 +217,7 @@
                   name="txtTen"
                   class="form-control"
                 />
+                <span class="text-danger" id="tbTen">*</span>
               </div>
               <div class="form-group">
                 <label for="txtTen">SCMND Cũ:</label>
@@ -179,6 +227,7 @@
                   name="txtCMND"
                   class="form-control"
                 />
+                <span class="text-danger" style="color: red;" id="tbCMND">*</span>
               </div>
               <div class="form-group">
                 <label for="txtQue">Quê quán:</label>
@@ -188,6 +237,7 @@
                   name="txtQue"
                   class="form-control"
                 />
+                <span class="text-danger" style="color: red;" id="tbDc">*</span>
               </div>
               <div class="form-group">
                 <label for="txtEmail">Email:</label>
@@ -197,15 +247,17 @@
                   name="txtEmail"
                   class="form-control"
                 />
+                <span class="text-danger" style="color: red;" id="tbEmail">*</span>
               </div>
               <div class="form-group">
                 <label for="txtSDT">SO dien thoai:</label>
                 <input
-                  type="number"
+                  type="text"
                   id="txtSDT"
                   name="txtSDT"
                   class="form-control"
                 />
+                <span class="text-danger" style="color: red;" id="tbSDT">*</span>
               </div>
               <div class="form-group">
                 <label for="txtAvatar">Ảnh đại diện:</label>
@@ -215,6 +267,7 @@
                   name="txtAvatar"
                   class="form-control"
                 />
+                <span class="text-danger" style="color: red;" id="tbAvatar">*</span>
               </div>
             </form>
           </div>
