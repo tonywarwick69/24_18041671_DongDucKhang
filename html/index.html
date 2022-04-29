@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>18041671_DongDucKhang</title>
+    <link
+      rel="stylesheet"
+      href="../bootstrap/CSS/bootstrap.min.css"
+      type="text/css"
+    />
+    <script src="../bootstrap/JS/jquery-3.6.0.min.js"></script>
+
+    <script src="../bootstrap/JS/bootstrap.bundle.js"></script>
+
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+      li {
+        list-style: none;
+        float: left;
+      }
+      ul {
+        display: inline;
+      }
+      header {
+        background-color: aquamarine;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        var i = 1;
+        $("#btnDK").click(function () {
+          $("#myModal").modal();
+        });
+        $("#txtTen").blur(function(){
+          var mauKT=/^[A-Za-z ]+/;
+          var chuoi=$("#txtTen").val();
+          if(mauKT.test(chuoi)==true){
+            alert("Nhập đúng");
+          } else {
+            alert("Nhập sai");
+          }
+        })
+        $("#txtCMND").blur(function(){
+          var mauKT=/^[0-9]+-[0-9]+-[0-9]+-[0-9]+/;
+          var chuoi=$("#txtCMND").val();
+          if(mauKT.test(chuoi)==true){
+            alert("Nhập đúng");
+          } else {
+            alert("Nhập sai");
+          }
+        })
+        $("#txtQue").blur(function(){
+          var mauKT=/^[A-Za-z ]+/;
+          var chuoi=$("#txtQue").val();
+          if(mauKT.test(chuoi)==true){
+            alert("Nhập đúng");
+          } else {
+            alert("Nhập sai");
+          }
+        })
+        $("#txtEmail").blur(function(){
+          var mauKT=/^[A-Za-z0-9]+@bc.com.vn$/;
+          var chuoi=$("#txtQue").val();
+          if(mauKT.test(chuoi)==true){
+            alert("Nhập đúng");
+          } else {
+            alert("Nhập sai");
+          }
+        })
+        $("#txtSDT").blur(function(){
+          var mauKT=/^09[0-9]{8}/;
+          var chuoi=$("#txtSDT").val();
+          if(mauKT.test(chuoi)==true){
+            alert("Nhập đúng");
+          } else {
+            alert("Nhập sai");
+          }
+        })
+        .get()
+        .join(",");
+        
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <header class="page-header">
+          <nav
+            class="navbar navbar-default"
+            style="background-color: aquamarine"
+          >
+            <div class="navbar-header col-sm-3 col-lg-3 col-md-3 col-xl-3">
+              <img src="../image/LOGO.PNG" alt="" />
+            </div>
+
+            <div
+              class="navabar-header col-sm-9 col-lg-9 col-md-9 col-xl-9 text-center"
+            >
+              <h2 style="color: #274388">
+                BỘ CÔNG THƯƠNG <br />
+                TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP TP. HỒ CHÍ MINH
+              </h2>
+              <p style="color: red">
+                Đổi mới, nâng tầm cao mới - Năng động, hội nhập toàn cầu
+              </p>
+            </div>
+          </nav>
+        </header>
+      </div>
+      <div class="row">
+        <nav class="navbar bg-info">
+          <ul class="nav navbar-nav navbar-center">
+            <li class="nav-item"><a href="#">Đăng nhập</a></li>
+            <li class="nav-item">
+              <a href="#" id="btnDK" class="nav-link"return= >Đăng ký</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="row">
+        <div
+          class="navabar-header col-sm-9 col-lg-9 col-md-9 col-xl-9 text-center"
+        >
+          <h2>
+            DANH SÁCH ĐĂNG KÝ LÀM CĂN CƯỚC SINH VIÊN TRƯỜNG DHCN THÀNH PHỐ HỒ
+            CHÍ MINH
+          </h2>
+        </div>
+        <table class="table table-striped" id="danhSach">
+          <tr>
+            <th>
+              <tr>
+                <td>STT</td>
+                <td>Họ tên</td>
+                <td>SCMND cũ</td>
+                <td>Quê quán</td>
+                <td>Email</td>
+                <td>Điện thoại</td>
+                <td>Ảnh đại diện</td>
+              </tr>
+            </th>
+          </tr>
+        </table>
+      </div>
+      <div class="row">
+        <footer class="col-md-12 bg-info text-center">
+          <p>SVTH:........Mã sinh viên:18041671 Lớp:DHKTPM16FTT</p>
+        </footer>
+      </div>
+    </div>
+    <div class="modal" role="dialog" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header justify-content-center">
+            THÔNG TIN CÁ NHÂN
+          </div>
+          <div class="modal-body">
+            <form action="" method="get" class="form-horizontal">
+              <div class="form-group">
+                <label for="txtTen">Họ tên:</label>
+                <input
+                  type="text"
+                  id="txtTen"
+                  name="txtTen"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="txtTen">SCMND Cũ:</label>
+                <input
+                  type="text"
+                  id="txtCMND"
+                  name="txtCMND"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="txtQue">Quê quán:</label>
+                <input
+                  type="text"
+                  id="txtQue"
+                  name="txtQue"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="txtEmail">Email:</label>
+                <input
+                  type="email"
+                  id="txtEmail"
+                  name="txtEmail"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="txtSDT">SO dien thoai:</label>
+                <input
+                  type="number"
+                  id="txtSDT"
+                  name="txtSDT"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="txtAvatar">Ảnh đại diện:</label>
+                <input
+                  type="file"
+                  id="txtAvatar"
+                  name="txtAvatar"
+                  class="form-control"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="submit" id="btnLuu" class="btn btn-warning">
+              Lưu
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
